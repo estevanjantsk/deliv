@@ -9,13 +9,12 @@
     <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </head>
   <body>
-    <header>
-      <h1 class="text-red-500 text-5xl font-bold text-center">Tailwind CSS</h1>
-    </header>
-    <main role="main" class="container">
+    <main class="min-h-screen flex flex-col">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-      <%= @inner_content %>
+      <p class="text-center text-sm text-red-500" role="alert"><%= get_flash(@conn, :error) %></p>
+      <div class="flex flex-1">
+       <%= @inner_content %>
+      </div>
     </main>
   </body>
 </html>

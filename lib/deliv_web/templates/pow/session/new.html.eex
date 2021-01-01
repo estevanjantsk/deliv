@@ -1,24 +1,70 @@
-<h1>Sign in</h1>
 
-<%= form_for @changeset, @action, [as: :user], fn f -> %>
-  <%= if @changeset.action do %>
-    <div class="alert alert-danger">
-      <p>Oops, something went wrong! Please check the errors below.</p>
+<div class="flex flex-1 content-center items-center justify-center">
+  <div class="w-full lg:w-4/12 px-4">
+    <div
+      class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-300 border-0"
+    >
+      <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+        <div class="text-gray-500 text-center mb-3 font-bold">
+          <small>Signin with credentials</small>
+        </div>
+
+        <%= if @changeset.action do %>
+          <div class="alert alert-danger">
+            <p>Oops, something went wrong! Please check the errors below.</p>
+          </div>
+        <% end %>
+
+        <%= form_for @changeset, @action, [as: :user], fn f -> %>
+          <div class="relative w-full mb-3">
+            <%= label f, Pow.Ecto.Schema.user_id_field(@changeset), "Email",
+              class: "block uppercase text-gray-700 text-xs font-bold mb-2" %>
+            <%= email_input f, Pow.Ecto.Schema.user_id_field(@changeset),
+              class: "px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full",
+              placeholder: "Email",
+              style: "transition: all 0.15s ease 0s;"
+            %>
+            <%= error_tag f, Pow.Ecto.Schema.user_id_field(@changeset) %>
+          </div>
+          <div class="relative w-full mb-3">
+            <%= label f, :password, "Password",
+              class: "block uppercase text-gray-700 text-xs font-bold mb-2" %>
+            <%= password_input f, :password,
+              class: "px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full",
+              placeholder: "Password",
+              style: "transition: all 0.15s ease 0s;"
+            %>
+            <%= error_tag f, :password %>
+          </div>
+          <div>
+            <label class="inline-flex items-center cursor-pointer"
+              ><input
+                id="customCheckLogin"
+                type="checkbox"
+                class="form-checkbox text-gray-800 ml-1 w-5 h-5"
+                style="transition: all 0.15s ease 0s;"
+              /><span class="ml-2 text-sm font-semibold text-gray-700"
+                >Remember me</span
+              ></label
+            >
+          </div>
+          <div class="text-center mt-6">
+            <%= submit "Sign in", class: "bg-gray-900 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full", style: "transition: all 0.15s ease 0s;" %>
+          </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
-
-  <%= label f, Pow.Ecto.Schema.user_id_field(@changeset) %>
-  <%= text_input f, Pow.Ecto.Schema.user_id_field(@changeset) %>
-  <%= error_tag f, Pow.Ecto.Schema.user_id_field(@changeset) %>
-
-  <%= label f, :password %>
-  <%= password_input f, :password %>
-  <%= error_tag f, :password %>
-
-  <div>
-    <%= submit "Sign in" %>
+    <div class="flex flex-wrap mt-6">
+      <%# <div class="w-1/2">
+        <a href="#pablo" class="text-gray-300"
+          ><small>Forgot password?</small></a
+        >
+      </div> %>
+      <div class="text-center">
+        <%= link to: Routes.pow_registration_path(@conn, :new), class: "text-gray-300" do %>
+          <small>Create new account</small>
+        <% end %>
+      </div>
+    </div>
   </div>
-<% end %>
-
-
-<span><%= link "Register", to: Routes.pow_registration_path(@conn, :new) %></span>
+</div>

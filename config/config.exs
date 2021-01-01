@@ -33,4 +33,5 @@ import_config "#{Mix.env()}.exs"
 config :deliv, :pow,
   user: Deliv.Users.User,
   repo: Deliv.Repo,
-  web_module: DelivWeb
+  web_module: DelivWeb,
+  messages_backend: DelivWeb.Pow.Messages
