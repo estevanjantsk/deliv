@@ -1,5 +1,5 @@
 defmodule Deliv.Users.User do
-  use Ecto.Schema
+  use Deliv.Schema
   use Pow.Ecto.Schema
 
   schema "users" do

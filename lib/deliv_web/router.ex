@@ -31,6 +31,12 @@ defmodule DelivWeb.Router do
     get "/", PageController, :index
   end
 
+  scope "/admin", DelivWeb.Admin, as: :admin do
+    pipe_through :browser
+
+    resources "/restaurants", RestaurantController, only: [:edit, :update]
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", DelivWeb do
   #   pipe_through :api

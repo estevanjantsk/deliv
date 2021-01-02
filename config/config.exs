@@ -35,3 +35,5 @@ config :deliv, :pow,
   repo: Deliv.Repo,
   web_module: DelivWeb,
   messages_backend: DelivWeb.Pow.Messages
+
+config :deliv, Deliv.Repo, migration_primary_key: [name: :id, type: :binary_id]
