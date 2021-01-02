@@ -29,11 +29,11 @@ defmodule DelivWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/admin", AdminController, :show
   end
 
   scope "/admin", DelivWeb.Admin, as: :admin do
     pipe_through :browser
-
     resources "/restaurants", RestaurantController, only: [:edit, :update]
   end
 

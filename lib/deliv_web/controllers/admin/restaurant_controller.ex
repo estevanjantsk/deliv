@@ -1,6 +1,8 @@
 defmodule DelivWeb.Admin.RestaurantController do
   use DelivWeb, :controller
 
+  plug :put_layout, "admin.html"
+
   alias Deliv.Admin
 
   def edit(conn, %{"id" => id}) do

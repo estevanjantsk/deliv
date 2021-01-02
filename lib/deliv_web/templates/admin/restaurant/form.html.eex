@@ -22,6 +22,6 @@
   <%= error_tag f, :address %>
 
   <div>
-    <%= submit "Save" %>
+    <%= submit "Atualizar" %>
   </div>
 <% end %>
