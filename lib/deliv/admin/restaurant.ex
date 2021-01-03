@@ -9,6 +9,8 @@ defmodule Deliv.Admin.Restaurant do
     field :phone, :string
 
     timestamps()
+
+    has_many :users, Deliv.Users.User
   end
 
   @doc false

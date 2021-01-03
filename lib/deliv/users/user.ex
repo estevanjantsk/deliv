@@ -8,6 +8,8 @@ defmodule Deliv.Users.User do
     pow_user_fields()
 
     timestamps()
+
+    belongs_to :restaurant, Deliv.Admin.Restaurant
   end
 
   def changeset_role(user_or_changeset, attrs) do

@@ -15,7 +15,7 @@
           </div>
         <% end %>
 
-        <%= form_for @changeset, @action, [as: :user], fn f -> %>
+        <%= form_for @changeset, Routes.login_path(@conn, :create), fn f -> %>
           <div class="relative w-full mb-3">
             <%= label f, Pow.Ecto.Schema.user_id_field(@changeset), "Email",
               class: "block uppercase text-gray-700 text-xs font-bold mb-2" %>
@@ -61,7 +61,7 @@
         >
       </div> %>
       <div class="text-center">
-        <%= link to: Routes.pow_registration_path(@conn, :new), class: "text-gray-300" do %>
+        <%= link to: Routes.signup_path(@conn, :new), class: "text-gray-300" do %>
           <small>Create new account</small>
         <% end %>
       </div>
